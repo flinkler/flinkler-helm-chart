@@ -1,0 +1,8 @@
+environment: dev
+
+serviceType: ClusterIP
+ImagePullPolicy: Always
+
+kafkaManager:
+  username: admin
+  password: admin

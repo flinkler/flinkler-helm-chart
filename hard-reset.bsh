@@ -1,0 +1,14 @@
+#!/bin/sh
+
+minikube delete
+
+minikube config set cpus 4
+minikube config set memory 8192
+
+minikube start --cpus 4 --memory 8192 --vm-driver=kvm2
+minikube addons enable ingress
+minikube addons enable heapster
+helm init --upgrade --wait
+
+helm install . --name test --set environment=dev
+minikube dashboard
